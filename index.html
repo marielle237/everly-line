@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everly Line for all by LR</title>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Arial', sans-serif; background: #F8F6F0; color: #1C1C1C; }
+        html { scroll-behavior: smooth; }
+
+        /* HEADER = TA BANNIÈRE banniere-everly.jpeg */
+        header {
+            background: url('images/banniere-everly.jpeg');
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            min-height: 200px;
+        }
+      .header-top { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-start; 
+            padding: 15px 20px;
+        }
+      .logo { 
+            width: 70px; 
+            height: 70px; 
+            border-radius: 50%; 
+            border: 3px solid white; 
+            object-fit: cover; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+      .titre { 
+            color: #1C1C1C; 
+            font-size: 20px; 
+            flex-grow: 1; 
+            text-align: center; 
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+            margin-top: 10px;
+            font-weight: bold;
+        }
+      .panier { 
+            background: #E6BE8A; 
+            color: #1C1C1C; 
+            padding: 8px 12px; 
+            border-radius: 25px; 
+            cursor: pointer; 
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        /* MENU SIMPLE - PAS DE DÉROULANT */
+        nav { 
+            background: rgba(230, 190, 138, 0.95); 
+            padding: 8px; 
+            text-align: center; 
+        }
+        nav a { 
+            color: #1C1C1C; 
+            text-decoration: none; 
+            margin: 0 15px; 
+            font-weight: bold; 
+            font-size: 15px; 
+            cursor: pointer; 
+        }
+        nav a:hover { text-decoration: underline; }
+
+        /* HERO PLEIN ÉCRAN AVEC shopping-famille.jpeg */
+      .hero-everly {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                        url('images/shopping-famille.jpeg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+      .hero-contenu { padding: 20px; }
+      .hero-bienvenue { font-size: 2.2rem; font-weight: 300; margin-bottom: 0.8rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.7); }
+      .hero-slogan { font-size: 1.5rem; margin-bottom: 3rem; font-style: italic; text-shadow: 2px 2px 8px rgba(0,0,0,0.7); }
+      .btn-information { background: #E6BE8A; color: #1C1C1C; padding: 18px 50px; text-decoration: none; font-weight: 600; letter-spacing: 2px; border-radius: 2px; transition: 0.3s; display: inline-block; }
+      .btn-information:hover { background: white; transform: translateY(-3px); }
+
+        /* CONTACT = FIN DE L'ACCUEIL - ON S'ARRÊTE ICI */
+      .contact-accueil {
+            background: #1C1C1C;
+            color: #E6BE8A;
+            text-align: center;
+            padding: 80px 20px;
+            min-height: 70vh;
+        }
+      .contact-accueil h2 { font-size: 28px; margin-bottom: 20px; }
+      .contact-accueil p { font-size: 18px; margin: 10px 0; }
+      .livraison { color: #E6BE8A; font-weight: bold; margin: 15px 0; font-size: 20px; }
+
+        /* PAGE PRODUITS CACHÉE - S'AFFICHE SEULEMENT QUAND ON CLIQUE */
+        #page-produits { display: none; padding-top: 20px; }
+
+        /* FILTRES CATÉGORIES */
+      .filtres-categories { text-align: center; padding: 40px 20px 10px; background: #F8F6F0; }
+      .filtres-categories h2 { margin-bottom: 20px; color: #1C1C1C; }
+      .btn-filtre { background: white; color: #1C1C1C; border: 2px solid #E6BE8A; padding: 10px 25px; margin: 5px; border-radius: 25px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+      .btn-filtre:hover,.btn-filtre.actif { background: #E6BE8A; color: #1C1C1C; }
+
+        /* 4 COLONNES FIXES */
+      .produits {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+      .produit {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 2px solid #E6BE8A;
+            width: 100%;
+        }
+      .produit.cache { display: none; }
+      .produit img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+      .produit h3 { margin: 10px 0; color: #1C1C1C; font-size: 16px; }
+      .prix { color: #C9B8A8; font-size: 20px; font-weight: bold; margin: 10px 0; }
+      .btn-ajouter { background: #1C1C1C; color: #E6BE8A; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px; }
+      .btn-ajouter:hover { background: #E6BE8A; color: #1C1C1C; }
+      .select-taille { width: 100%; padding: 8px; margin: 10px 0 5px 0; border: 2px solid #E6BE8A; border-radius: 8px; font-weight: bold; text-align: center; }
+      .input-perso { display: none; width: 100%; padding: 8px; margin: 0 0 10px 0; border: 2px solid #E6BE8A; border-radius: 8px; }
+
+        footer { background: #1C1C1C; color: #E6BE8A; text-align: center; padding: 20px; margin-top: 40px; }
+      .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; }
+      .modal-content { background: white; margin: 3% auto; padding: 20px; width: 90%; max-width: 500px; border-radius: 15px; position: relative; max-height: 90vh; overflow-y: auto; }
+      .close { position: absolute; top: 10px; right: 15px; font-size: 28px; cursor: pointer; color: #1C1C1C; }
+      .btn-whatsapp { background: #25D366; color: white; border: none; padding: 15px; border-radius: 25px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 15px; font-size: 16px; }
+      .form-client { margin: 15px 0; }
+      .form-client input { width: 100%; padding: 10px; margin: 5px 0; border: 2px solid #E6BE8A; border-radius: 8px; }
+      .btn-supprimer { background: #ff4444; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-left: 10px; }
+      .article-panier { display: flex; justify-content: space-between; align-items: center; margin: 8px 0; padding: 5px; border-bottom: 1px solid #eee; }
+      .galerie-auto { margin-bottom: 10px; }
+      .galerie-auto img { transition: 0.3s; cursor: pointer; }
+      .galerie-auto.miniatures { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+      .galerie-auto.miniatures img { width: 60px; height: 60px; object-fit: cover; border-radius: 5px; border: 2px solid #ddd; }
+
+        @media (max-width: 1024px) {
+          .produits { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 768px) {
+          .produits { grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 20px; }
+          .produit img { height: 180px; }
+          .hero-everly { height: 85vh; }
+          .hero-bienvenue { font-size: 1.6rem; }
+          .hero-slogan { font-size: 1.2rem; }
+          .titre { font-size: 18px; }
+          header { min-height: 160px; }
+        }
+        @media (max-width: 480px) {
+          .produits { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 15px; }
+          .produit { padding: 10px; }
+          .produit img { height: 150px; }
+        }
+        /* GALERIE PRODUIT AVEC MINIATURES CLIQUABLES */
+.galerie-produit { margin-bottom: 10px; }
+.photo-principale { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; cursor: pointer; }
+.miniatures { display: flex; gap: 5px; margin-top: 8px; justify-content: center; flex-wrap: wrap; }
+.miniatures img { width: 50px; height: 50px; object-fit: cover; border-radius: 5px; cursor: pointer; border: 2px solid transparent; opacity: 0.6; transition: 0.2s; }
+.miniatures img.active, .miniatures img:hover { border-color: #E6BE8A; opacity: 1; border-width: 3px; }
+.input-perso { display: none; width: 100%; padding: 8px; margin-top: 5px; border: 2px solid #E6BE8A; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <!-- HEADER AVEC TA BANNIÈRE banniere-everly.jpeg -->
+    <header>
+        <div class="header-top">
+            <img src="images/logo-everly.jpeg" alt="Logo Everly Line" class="logo">
+            <h1 class="titre">Everly Line for all by LR</h1>
+            <div class="panier" onclick="ouvrirPanier()">🛒 Panier (<span id="compteur">0</span>)</div>
+        </div>
+        <nav>
+            <a onclick="retourAccueil()">Accueil</a>
+            <a onclick="afficherProduits()">Nos Articles</a>
+            <a href="#contact-accueil">Contact</a>
+        </nav>
+    </header>
+
+    <!-- PAGE ACCUEIL -->
+    <div id="page-accueil">
+        <!-- HERO PLEIN ÉCRAN -->
+        <section class="hero-everly">
+            <div class="hero-contenu">
+                <p class="hero-bienvenue">Bienvenue chez Everly-Line Shopping</p>
+                <p class="hero-slogan">Votre satisfaction, notre priorité</p>
+                <a href="#contact-accueil" class="btn-information">information</a>
+            </div>
+        </section>
+
+        <!-- CONTACT = ON S'ARRÊTE ICI -->
+        <section class="contact-accueil" id="contact-accueil">
+            <h2>Contactez-nous</h2>
+            <p class="livraison">🚚 Livraison aux frais du client</p>
+            <p>📱 WhatsApp Commandes : +237 656 40 71 62</p>
+            <p>© 2026 Everly Line for all by LR - Cameroun 🇨🇲</p>
+        </section>
+    </div>
+    <!-- PAGE PRODUITS - CACHÉE AU DÉPART -->
+    <div id="page-produits">
+        <div class="filtres-categories">
+            <h2>Nos Articles</h2>
+            <button class="btn-filtre actif" onclick="filtrerProduits('tous')">Tous</button>
+            <button class="btn-filtre" onclick="filtrerProduits('femme')">Femme</button>
+            <button class="btn-filtre" onclick="filtrerProduits('homme')">Homme</button>
+            <button class="btn-filtre" onclick="filtrerProduits('enfant')">Enfant</button>
+            <button class="btn-filtre" onclick="filtrerProduits('chaussure')">Chaussures</button>
+        </div>
+
+   <section class="produits">
+    <!-- 1 -->
+    <div class="produit" data-categorie="chaussure">
+        <img src="images/ballerine%20maron.jpeg" alt="Ballerine Marron">
+        <h3>Ballerine Marron</h3>
+        <div class="prix">8.000 FCFA</div>
+        <select class="select-taille" id="pointure-ballerine" onchange="gererTaillePerso('pointure-ballerine')">
+            <option value="">Choisir pointure</option>
+            <option value="Pointure 20">Pointure 20</option>
+            <option value="Pointure 22">Pointure 22</option>
+            <option value="Pointure 24">Pointure 24</option>
+            <option value="Pointure 26">Pointure 26</option>
+            <option value="Pointure 28">Pointure 28</option>
+            <option value="Pointure 30">Pointure 30</option>
+            <option value="autre">Autre - Entrer ma pointure</option>
+        </select>
+        <input type="text" class="input-perso" id="pointure-ballerine-perso" placeholder="Écris ta pointure ici">
+        <button class="btn-ajouter" onclick="ajouterPanier('Ballerine Marron', 8000, 'pointure-ballerine')">Ajouter au panier</button>
+    </div>
+
+    <!-- 2 -->
+    <div class="produit" data-categorie="enfant">
+        <img src="images/bonnet.jpeg" alt="Bonnet">
+        <h3>Bonnet</h3>
+        <div class="prix">2000 FCFA</div>
+        <button class="btn-ajouter" onclick="ajouterPanier('Bonnet', 2000, null)">Ajouter au panier</button>
+    </div>
+
+    <!-- 3 -->
+    <div class="produit" data-categorie="homme enfant">
+        <img src="images/djean-chemise.jpeg" alt="djean-chemise">
+        <h3>djean-chemise</h3>
+        <div class="prix">10.000 FCFA</div>
+        <select class="select-taille" id="taille-djean" onchange="gererTaillePerso('taille-djean')">
+            <option value="">Choisir taille</option>
+            <option value="T20 - 2 ans">T20 - 2 ans</option>
+            <option value="T30 - 3 ans">T30 - 3 ans</option>
+            <option value="XM - 4/5 ans">XM - 4/5 ans</option>
+            <option value="XR - 6/7 ans">XR - 6/7 ans</option>
+            <option value="autre">Autre - Entrer ma taille</option>
+        </select>
+        <input type="text" class="input-perso" id="taille-djean-perso" placeholder="Écris ta taille ici">
+        <button class="btn-ajouter" onclick="ajouterPanier('djean-chemise', 10000, 'taille-djean')">Ajouter au panier</button>
+    </div>
+
+    <!-- 4 -->
+    <div class="produit" data-categorie="enfant">
+        <img src="images/ensemble.jpeg" alt="Ensemble">
+        <h3>Ensemble</h3>
+        <div class="prix">15.000 FCFA</div>
+        <select class="select-taille" id="taille-ensemble" onchange="gererTaillePerso('taille-ensemble')">
+            <option value="">Choisir taille</option>
+            <option value="T20 - 2 ans">T20 - 2 ans</option>
+            <option value="T30 - 3 ans">T30 - 3 ans</option>
+            <option value="XM - 4/5 ans">XM - 4/5 ans</option>
+            <option value="XR - 6/7 ans">XR - 6/7 ans</option>
+            <option value="autre">Autre - Entrer ma taille</option>
+        </select>
+        <input type="text" class="input-perso" id="taille-ensemble-perso" placeholder="Écris ta taille ici">
+        <button class="btn-ajouter" onclick="ajouterPanier('Ensemble', 15000, 'taille-ensemble')">Ajouter au panier</button>
+    </div>
+
+    <!-- 5 -->
+    <div class="produit" data-categorie="enfant">
+        <img src="images/ensemble%20bebe.jpeg" alt="Ensemble Bébé">
+        <h3>Ensemble Bébé</h3>
+        <div class="prix">15.000 FCFA</div>
+        <select class="select-taille" id="taille-bebe" onchange="gererTaillePerso('taille-bebe')">
+            <option value="">Choisir taille</option>
+            <option value="0-3 mois">0-3 mois</option>
+            <option value="3-6 mois">3-6 mois</option>
+            <option value="6-9 mois">6-9 mois</option>
+            <option value="9-12 mois">9-12 mois</option>
+            <option value="autre">Autre - Entrer ma taille</option>
+        </select>
+        <input type="text" class="input-perso" id="taille-bebe-perso" placeholder="Écris ta taille ici">
+        <button class="btn-ajouter" onclick="ajouterPanier('Ensemble Bébé', 15000, 'taille-bebe')">Ajouter au panier</button>
+    </div>
+
+    <!-- 6 -->
+    <div class="produit" data-categorie="enfant">
+        <img src="images/ensemble%20cullotte%20gris.jpeg" alt="Ensemble Cullotte Gris">
+        <h3>Ensemble Cullotte Gris</h3>
+        <div class="prix">8.500 FCFA</div>
+        <select class="select-taille" id="taille-cullotte" onchange="gererTaillePerso('taille-cullotte')">
+            <option value="">Choisir taille</option>
+            <option value="T20 - 2 ans">T20 - 2 ans</option>
+            <option value="T30 - 3 ans">T30 - 3 ans</option>
+            <option value="XM - 4/5 ans">XM - 4/5 ans</option>
+            <option value="XR - 6/7 ans">XR - 6/7 ans</option>
+            <option value="autre">Autre - Entrer ma taille</option>
+        </select>
+        <input type="text" class="input-perso" id="taille-cullotte-perso" placeholder="Écris ta taille ici">
+        <button class="btn-ajouter" onclick="ajouterPanier('Ensemble Cullotte Gris', 8500, 'taille-cullotte')">Ajouter au panier</button>
+    </div>
+
+    <!-- 7 -->
+    <div class="produit" data-categorie="enfant">
+        <img src="images/ensemble%20djean%20short.jpeg" alt="Ensemble Djean Short">
+        <h3>Ensemble Djean Short</h3>
+        <div class="prix">9.000 FCFA</div>
+        <select class="select-taille" id="taille-djeanshort" onchange="gererTaillePerso('taille-djeanshort')">
+            <option value="">Choisir taille</option>
+            <option value="T20 - 2 ans">T20 - 2 ans</option>
+            <option value="T30 - 3 ans">T30 - 3 ans</option>
+            <option value="XM - 4/5 ans">XM - 4/5 ans</option>
+            <option value="XR - 6/7 ans">XR - 6/7 ans</option>
+            <option value="autre">Autre - Entrer ma taille</option>
+        </select>
+        <input type="text" class="input-perso" id="taille-djeanshort-perso" placeholder="Écris ta taille ici">
+        <button class="btn-ajouter" onclick="ajouterPanier('Ensemble Djean Short', 9000, 'taille-djeanshort')">Ajouter au panier</button>
+    </div>
+
+    <!-- 8 -->
+    <div class="produit" data-categorie="enfant">
+        <img src="images/ensemble%20maron.jpeg" alt="Ensemble Marron">
+        <h3>Ensemble Marron</h3>
+        <div class="prix">9.000 FCFA</div>
+        <select class="select-taille" id="taille-marron" onchange="gererTaillePerso('taille-marron')">
+            <option value="">Choisir taille</option>
+            <option value="T20 - 2 ans">T20 - 2 ans</option>
+            <option value="T30 - 3 ans">T30 - 3 ans</option>
+            <option value="XM - 4/5 ans">XM - 4/5 ans</option>
+            <option value="XR - 6/7 ans">XR - 6/7 ans</option>
+            <option value="autre">Autre - Entrer ma taille</option>
+        </select>
+        <input type="text" class="input-perso" id="taille-marron-perso" placeholder="Écris ta taille ici">
+        <button class="btn-ajouter" onclick="ajouterPanier('Ensemble Marron', 9000, 'taille-marron')">Ajouter au panier</button>
+    </div>
+
+    <!-- 9 -->
+    <div class="produit" data-categorie="enfant">
+        <img src="images/ensemble%20plus%20valise.jpeg" alt="Ensemble + Valise">
+        <h3>Ensemble + Valise</h3>
+        <div class="prix">15.000 FCFA</div>
+        <select class="select-taille" id="taille-valise" onchange="gererTaillePerso('taille-valise')">
+            <option value="">Choisir taille</option>
+            <option value="T20 - 2 ans">T20 - 2 ans</option>
+            <option value="T30 - 3 ans">T30 - 3 ans</option>
+            <option value="XM - 4/5 ans">XM - 4/5 ans</option>
+            <option value="XR - 6/7 ans">XR - 6/7 ans</option>
+            <option value="autre">Autre - Entrer ma taille</option>
+        </select>
+        <input type="text" class="input-perso" id="taille-valise-perso" placeholder="Écris ta taille ici">
+        <button class="btn-ajouter" onclick="ajouterPanier('Ensemble + Valise', 15000, 'taille-valise')">Ajouter au panier</button>
+    </div>
+
+    <!-- 10 -->
+    <div class="produit" data-categorie="enfant">
+        <img src="images/ensemble%20short%20bleu%20blanc.jpeg" alt="Ensemble Short Bleu Blanc">
+        <h3>Ensemble Short Bleu Blanc</h3>
+        <div class="prix">6.000 FCFA</div>
+        <select class="select-taille" id="taille-bleublanc" onchange="gererTaillePerso('taille-bleublanc')">
+            <option value="">Choisir taille</option>
+            <option value="T20 - 2 ans">T20 - 2 ans</option>
+            <option value="T30 - 3 ans">T30 - 3 ans</option>
+            <option value="XM - 4/5 ans">XM - 4/5 ans</option>
+            <option value="XR - 6/7 ans">XR - 6/7 ans</option>
+            <option value="autre">Autre - Entrer ma taille</option>
+        </select>
+        <input type="text" class="input-perso" id="taille-bleublanc-perso" placeholder="Écris ta taille ici">
+        <button class="btn-ajouter" onclick="ajouterPanier('Ensemble Short Bleu Blanc', 6000, 'taille-bleublanc')">Ajouter au panier</button>
+    </div>
+
+    <!-- 11 -->
+    <div class="produit" data-categorie="enfant">
+        <img src="images/ensemble%20short.jpeg" alt="Ensemble Short">
+        <h3>Ensemble Short</h3>
+        <div class="prix">10.000 FCFA</div>
+        <select class="select-taille" id="taille-short" onchange="gererTaillePerso('taille-short')">
+            <option value="">Choisir taille</option>
+            <option value="T20 - 2 ans">T20 - 2 ans</option>
+            <option value="T30 - 3 ans">T30 - 3 ans</option>
+            <option value="XM - 4/5 ans">XM - 4/5 ans</option>
+            <option value="XR - 6/7 ans">XR - 6/7 ans</option>
+            <option value="autre">Autre - Entrer ma taille</option>
+        </select>
+        <input type="text" class="input-perso" id="taille-short-perso" placeholder="Écris ta taille ici">
+        <button class="btn-ajouter" onclick="ajouterPanier('Ensemble Short', 10000, 'taille-short')">Ajouter au panier</button>
+    </div>
+
+    <!-- 12 - AVEC 2 PHOTOS -->
+    <div class="produit" data-categorie="enfant" data-photos="images/ensemble%20grenouillere%20valise.jpeg,images/ensemblegrenouillere%20valise-contenu.jpeg">
+      <div class="galerie-auto"></div>
+      <h3>Grenouillère Valise</h3>
+      <div class="prix">15.000 FCFA</div>
+      <select class="select-taille" id="taille-grenouillere" onchange="gererTaillePerso('taille-grenouillere')">
+        <option value="">Choisir taille</option>
+        <option value="0-3 mois">0-3 mois</option>
+        <option value="3-6 mois">3-6 mois</option>
+        <option value="6-9 mois">6-9 mois</option>
+        <option value="9-12 mois">9-12 mois</option>
+        <option value="autre">Autre - Entrer ma taille</option>
+      </select>
+      <input type="text" class="input-perso" id="taille-grenouillere-perso" placeholder="Écris ta taille ici">
+      <button class="btn-ajouter" onclick="ajouterPanier('Grenouillère Valise', 15000, 'taille-grenouillere')">Ajouter au panier</button>
+    </div>
+
+    <!-- 13 -->
+    <div class="produit" data-categorie="femme">
+        <img src="images/robe%20blanche.jpeg" alt="Robe Blanche">
+        <h3>Robe Blanche</h3>
+        <div class="prix">8.500 FCFA</div>
+        <select class="select-taille" id="taille-robeblanche" onchange="gererTaillePerso('taille-robeblanche')">
+            <option value="">Choisir taille</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="autre">Autre - Entrer ma taille</option>
+        </select>
+        <input type="text" class="input-perso" id="taille-robeblanche-perso" placeholder="Écris ta taille ici">
+        <button class="btn-ajouter" onclick="ajouterPanier('Robe Blanche', 8500, 'taille-robeblanche')">Ajouter au panier</button>
+    </div>
+
+    <!-- 14 -->
+    <div class="produit" data-categorie="femme">
+        <img src="images/robe%20rose.jpeg" alt="Robe Rose">
+        <h3>Robe Rose</h3>
+        <div class="prix">15.000 FCFA</div>
+        <select class="select-taille" id="taille-roberose" onchange="gererTaillePerso('taille-roberose')">
+            <option value="">Choisir taille</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="autre">Autre - Entrer ma taille</option>
+        </select>
+        <input type="text" class="input-perso" id="taille-roberose-perso" placeholder="Écris ta taille ici">
+        <button class="btn-ajouter" onclick="ajouterPanier('Robe Rose', 15000, 'taille-roberose')">Ajouter au panier</button>
+    </div>
+
+    <!-- 15 -->
+    <div class="produit" data-categorie="femme">
+        <img src="images/robe%20rouge%20princesse.jpeg" alt="Robe Rouge Princesse">
+        <h3>Robe Rouge Princesse</h3>
+        <div class="prix">9.500 FCFA</div>
+        <select class="select-taille" id="taille-roberouge" onchange="gererTaillePerso('taille-roberouge')">
+            <option value="">Choisir taille</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="autre">Autre - Entrer ma taille</option>
+        </select>
+        <input type="text" class="input-perso" id="taille-roberouge-perso" placeholder="Écris ta taille ici">
+        <button class="btn-ajouter" onclick="ajouterPanier('Robe Rouge Princesse', 9500, 'taille-roberouge')">Ajouter au panier</button>
+    </div>
+
+    <!-- 16 -->
+    <div class="produit" data-categorie="femme">
+        <img src="images/robette.jpeg" alt="Robette">
+        <h3>Robette</h3>
+        <div class="prix">6.500 FCFA</div>
+        <select class="select-taille" id="taille-robette" onchange="gererTaillePerso('taille-robette')">
+            <option value="">Choisir taille</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="autre">Autre - Entrer ma taille</option>
+        </select>
+        <input type="text" class="input-perso" id="taille-robette-perso" placeholder="Écris ta taille ici">
+        <button class="btn-ajouter" onclick="ajouterPanier('Robette', 6500, 'taille-robette')">Ajouter au panier</button>
+    </div>
+
+    <!-- 17 -->
+    <div class="produit" data-categorie="chaussure">
+        <img src="images/sandale.jpeg" alt="Sandale">
+        <h3>Sandale</h3>
+        <div class="prix">6.500 FCFA</div>
+        <select class="select-taille" id="pointure-sandale" onchange="gererTaillePerso('pointure-sandale')">
+            <option value="">Choisir pointure</option>
+            <option value="Pointure 20">Pointure 20</option>
+            <option value="Pointure 22">Pointure 22</option>
+            <option value="Pointure 24">Pointure 24</option>
+            <option value="Pointure 26">Pointure 26</option>
+            <option value="Pointure 28">Pointure 28</option>
+            <option value="Pointure 30">Pointure 30</option>
+            <option value="autre">Autre - Entrer ma pointure</option>
+        </select>
+        <input type="text" class="input-perso" id="pointure-sandale-perso" placeholder="Écris ta pointure ici">
+        <button class="btn-ajouter" onclick="ajouterPanier('Sandale', 6500, 'pointure-sandale')">Ajouter au panier</button>
+    </div>
+
+    <!-- 18 -->
+    <div class="produit" data-categorie="chaussure">
+        <img src="images/tenis%20blanche.jpeg" alt="Tenis Blanche">
+        <h3>Tenis Blanche</h3>
+        <div class="prix">10.000 FCFA</div>
+        <select class="select-taille" id="pointure-tenisblanche" onchange="gererTaillePerso('pointure-tenisblanche')">
+            <option value="">Choisir pointure</option>
+            <option value="Pointure 20">Pointure 20</option>
+            <option value="Pointure 22">Pointure 22</option>
+            <option value="Pointure 24">Pointure 24</option>
+            <option value="Pointure 26">Pointure 26</option>
+            <option value="Pointure 28">Pointure 28</option>
+            <option value="Pointure 30">Pointure 30</option>
+            <option value="autre">Autre - Entrer ma pointure</option>
+        </select>
+        <input type="text" class="input-perso" id="pointure-tenisblanche-perso" placeholder="Écris ta pointure ici">
+        <button class="btn-ajouter" onclick="ajouterPanier('Tenis Blanche', 10000, 'pointure-tenisblanche')">Ajouter au panier</button>
+    </div>
+
+    <!-- 19 -->
+    <div class="produit" data-categorie="chaussure">
+        <img src="images/tennis%20lacet%20rose.jpeg" alt="Tennis Lacet Rose">
+        <h3>Tennis Lacet Rose</h3>
+        <div class="prix">10.000 FCFA</div>
+        <select class="select-taille" id="pointure-lacetrose" onchange="gererTaillePerso('pointure-lacetrose')">
+            <option value="">Choisir pointure</option>
+            <option value="Pointure 20">Pointure 20</option>
+            <option value="Pointure 22">Pointure 22</option>
+            <option value="Pointure 24">Pointure 24</option>
+            <option value="Pointure 26">Pointure 26</option>
+            <option value="Pointure 28">Pointure 28</option>
+            <option value="Pointure 30">Pointure 30</option>
+            <option value="autre">Autre - Entrer ma pointure</option>
+        </select>
+        <input type="text" class="input-perso" id="pointure-lacetrose-perso" placeholder="Écris ta pointure ici">
+        <button class="btn-ajouter" onclick="ajouterPanier('Tennis Lacet Rose', 10000, 'pointure-lacetrose')">Ajouter au panier</button>
+    </div>
+</section>
+    </div>
+
+    <div id="modalPanier" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fermerPanier()">&times;</span>
+            <h2>🛒 Ton Panier Everly Line</h2>
+            <div id="contenuPanier"></div>
+            <div id="totalPanier" style="font-size: 20px; font-weight: bold; margin: 15px 0; color: #C9B8A8;"></div>
+            <div class="form-client">
+                <input type="text" id="nomClient" placeholder="Ton Nom Complet" required>
+                <input type="tel" id="telClient" placeholder="Ton Téléphone WhatsApp" required>
+                <input type="text" id="quartierVilleClient" placeholder="Quartier + Ville de livraison" required>
+                <label>Mode de paiement :</label>
+                <select id="paiement" onchange="afficherNumero()" required>
+                  <option value="">Choisir le mode de paiement...</option>
+                  <option value="orange">Orange Money</option>
+                  <option value="mtn">MTN Mobile Money</option>
+                  <option value="livraison">Cash à la livraison</option>
+                  <option value="acompte10">Acompte 10% avant livraison</option>
+                  <option value="acompte15">Acompte 15% avant livraison</option>
+                </select>
+                <div id="info-paiement" style="display:none; background:#fff3cd; padding:12px; margin:10px 0; border-radius:8px; border:1px solid #ffe69c; font-size:14px;"></div>
+                <button class="btn-whatsapp" onclick="finaliserCommandeWhatsApp()">📱 Finaliser sur WhatsApp</button>
+            </div>
+        </div>
+    </div>
+
+  <script>
+        let panier = [];
+        let produitsCMS = []; // ← AJOUTÉ POUR LE CMS
+
+        function afficherProduits() {
+            document.getElementById('page-accueil').style.display = 'none';
+            document.getElementById('page-produits').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function retourAccueil() {
+            document.getElementById('page-produits').style.display = 'none';
+            document.getElementById('page-accueil').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function filtrerProduits(categorie) {
+            const produits = document.querySelectorAll('.produit');
+            const boutons = document.querySelectorAll('.btn-filtre');
+            boutons.forEach(btn => btn.classList.remove('actif'));
+            event.target.classList.add('actif');
+            produits.forEach(produit => {
+                if (categorie === 'tous') {
+                    produit.classList.remove('cache');
+                } else {
+                    if (produit.getAttribute('data-categorie').includes(categorie)) {
+                        produit.classList.remove('cache');
+                    } else {
+                        produit.classList.add('cache');
+                    }
+                }
+            });
+        }
+
+        function gererTaillePerso(selectId) {
+            const select = document.getElementById(selectId);
+            const inputPerso = document.getElementById(selectId + '-perso');
+            if (select.value === 'autre') {
+                inputPerso.style.display = 'block';
+            } else {
+                inputPerso.style.display = 'none';
+                inputPerso.value = '';
+            }
+        }
+
+        function ajouterPanier(nom, prix, selectId) {
+            let taille = null;
+            if (selectId) {
+                const selectElement = document.getElementById(selectId);
+                taille = selectElement.value;
+                if (taille === 'autre') {
+                    const inputPerso = document.getElementById(selectId + '-perso');
+                    taille = inputPerso.value.trim();
+                    if (!taille) {
+                        alert('Stp écris ta taille/pointure personnalisée ❤️');
+                        return;
+                    }
+                    taille = 'Taille perso: ' + taille;
+                }
+                if (!taille) {
+                    alert('Stp choisis une taille/pointure avant d\'ajouter au panier ❤️');
+                    return;
+                }
+            }
+            panier.push({nom: nom, prix: prix, taille: taille});
+            document.getElementById('compteur').textContent = panier.length;
+            if (selectId) {
+                document.getElementById(selectId).value = '';
+                document.getElementById(selectId + '-perso').style.display = 'none';
+                document.getElementById(selectId + '-perso').value = '';
+            }
+            alert(nom + (taille? ' (' + taille + ')' : '') + ' ajouté au panier! ✅');
+        }
+
+        function ouvrirPanier() {
+            const modal = document.getElementById('modalPanier');
+            const contenu = document.getElementById('contenuPanier');
+            const total = document.getElementById('totalPanier');
+            if(panier.length === 0) {
+                contenu.innerHTML = '<p>Ton panier est vide</p>';
+                total.textContent = '';
+            } else {
+                let html = '';
+                let somme = 0;
+                panier.forEach((item, index) => {
+                    const tailleText = item.taille? ` - ${item.taille}` : '';
+                    html += `<div class="article-panier">
+                                <span>${item.nom}${tailleText} - ${item.prix.toLocaleString()} FCFA</span>
+                                <button class="btn-supprimer" onclick="supprimerArticle(${index})">X</button>
+                             </div>`;
+                    somme += item.prix;
+                });
+                contenu.innerHTML = html;
+                total.textContent = `Total : ${somme.toLocaleString()} FCFA`;
+            }
+            modal.style.display = 'block';
+        }
+
+        function supprimerArticle(index) {
+            panier.splice(index, 1);
+            document.getElementById('compteur').textContent = panier.length;
+            ouvrirPanier();
+        }
+
+        function fermerPanier() {
+            document.getElementById('modalPanier').style.display = 'none';
+        }
+
+        function afficherNumero() {
+          const choix = document.getElementById('paiement').value;
+          const div = document.getElementById('info-paiement');
+          let texte = '';
+          if(choix === 'orange'){
+            texte = '<strong>Orange Money : +237 697 96 89 02</strong><br>Au nom de Everly Line<br><em>⚠️ La capture d\'écran du dépôt valide la commande. Envoie-la sur WhatsApp stp</em>';
+          } else if(choix === 'mtn'){
+            texte = '<strong>MTN MoMo : +237 671 49 21 55</strong><br>Au nom de Everly Line<br><em>⚠️ La capture d\'écran du dépôt valide la commande. Envoie-la sur WhatsApp stp</em>';
+          } else if(choix === 'livraison'){
+            texte = 'Vous paierez en espèces à la livraison 📦<br>Préparez le montant exact svp<br><em>⚠️ Livraison aux frais du client</em>';
+          } else if(choix === 'acompte10'){
+            texte = '<strong>Acompte 10% :</strong><br>Orange: +237 697 96 89 02<br>MTN: +237 671 49 21 55<br><em>Payez 10% maintenant. Envoyez la capture après dépôt. Reste à payer à la livraison</em>';
+          } else if(choix === 'acompte15'){
+            texte = '<strong>Acompte 15% :</strong><br>Orange: +237 697 96 89 02<br>MTN: +237 671 49 21 55<br><em>Payez 15% maintenant. Envoyez la capture après dépôt. Reste à payer à la livraison</em>';
+          }
+          if(texte){
+            div.innerHTML = texte;
+            div.style.display = 'block';
+          } else {
+            div.style.display = 'none';
+          }
+        }
+
+        function finaliserCommandeWhatsApp() {
+            if(panier.length === 0) {
+                alert('Ton panier est vide!');
+                return;
+            }
+            const nom = document.getElementById('nomClient').value.trim();
+            const tel = document.getElementById('telClient').value.trim();
+            const quartierVille = document.getElementById('quartierVilleClient').value.trim();
+            const paiementSelect = document.getElementById('paiement');
+            const paiement = paiementSelect.options[paiementSelect.selectedIndex].text;
+            if (!nom ||!tel ||!quartierVille ||!paiementSelect.value) {
+                alert('Remplis ton nom, téléphone, quartier+ville et mode de paiement stp ❤️');
+                return;
+            }
+            let message = `*NOUVELLE COMMANDE EVERLY LINE* 👑%0A%0A`;
+            message += `*CLIENT:* ${nom}%0A`;
+            message += `*TÉL:* ${tel}%0A`;
+            message += `*QUARTIER + VILLE:* ${quartierVille}%0A`;
+            message += `*PAIEMENT:* ${paiement}%0A%0A`;
+            message += `*ARTICLES:*%0A`;
+            let total = 0;
+            panier.forEach(item => {
+                const tailleText = item.taille? ` (${item.taille})` : '';
+                message += `- ${item.nom}${tailleText} : ${item.prix.toLocaleString()} FCFA%0A`;
+                total += item.prix;
+            });
+            message += `%0A*TOTAL: ${total.toLocaleString()} FCFA*%0A%0A`;
+            message += `🚚 *Livraison aux frais du client*%0A`;
+            if(paiementSelect.value === 'orange' || paiementSelect.value === 'mtn' || paiementSelect.value === 'acompte10' || paiementSelect.value === 'acompte15'){
+                message += `⚠️ *Envoie la capture d'écran du dépôt sur WhatsApp pour valider*%0A%0A`;
+            }
+            message += `Merci pour ta commande ❤️`;
+            window.open(`https://wa.me/237656407162?text=${message}`, '_blank');
+            panier = [];
+            document.getElementById('compteur').textContent = 0;
+            document.getElementById('nomClient').value = '';
+            document.getElementById('telClient').value = '';
+            document.getElementById('quartierVilleClient').value = '';
+            document.getElementById('paiement').value = '';
+            document.getElementById('info-paiement').style.display = 'none';
+            fermerPanier();
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+          // TES MINIATURES ACTUELLES - JE TOUCHE PAS
+          document.querySelectorAll('[data-photos]').forEach(produit => {
+            let photos = produit.getAttribute('data-photos').split(',').map(p => p.trim());
+            let galerie = produit.querySelector('.galerie-auto');
+            if (!galerie) return;
+            galerie.innerHTML = '';
+            let grandeImage = document.createElement('img');
+            grandeImage.src = photos[0];
+            grandeImage.style.width = '100%';
+            grandeImage.style.height = '220px';
+            grandeImage.style.objectFit = 'cover';
+            grandeImage.style.borderRadius = '10px';
+            galerie.appendChild(grandeImage);
+            if (photos.length > 1) {
+              let box = document.createElement('div');
+              box.className = 'galerie-auto miniatures';
+              photos.forEach((url, i) => {
+                let mini = document.createElement('img');
+                mini.src = url;
+                mini.style.border = i === 0? '3px solid #E6BE8A' : '2px solid #ddd';
+                mini.onclick = () => {
+                  grandeImage.src = url;
+                  box.querySelectorAll('img').forEach(m => m.style.border = '2px solid #ddd');
+                  mini.style.border = '3px solid #E6BE8A';
+                };
+                box.appendChild(mini);
+              });
+              galerie.appendChild(box);
+            }
+          });
+
+          // ===== AJOUT CMS - ÇA COMMENCE ICI =====
+          chargerProduitsCMS();
+        });
+
+        // ===== FONCTIONS CMS AJOUTÉES - RIEN D'AUTRE NE CHANGE =====
+        async function chargerProduitsCMS() {
+            try {
+                const response = await fetch('/_produits/index.json');
+                produitsCMS = await response.json();
+                ajouterProduitsCMS();
+            } catch(e) {
+                console.log('CMS vide - pas grave, tes produits restent affichés');
+            }
+        }
+
+        function ajouterProduitsCMS() {
+            const container = document.querySelector('.produits');
+            if(!container || produitsCMS.length === 0) return;
+
+            const nouveauxProduits = produitsCMS.map(p => {
+                let selectHTML = '';
+                let idTaille = `taille-cms-${p.slug}`;
+
+                if(p.typeTaille === 'vetement') {
+                    selectHTML = `<select class="select-taille" id="${idTaille}" onchange="gererTaillePerso('${idTaille}')">
+                        <option value="">Choisir taille</option>
+                        <option value="S">S</option><option value="M">M</option>
+                        <option value="L">L</option><option value="XL">XL</option>
+                        <option value="autre">Autre</option>
+                    </select><input type="text" class="input-perso" id="${idTaille}-perso" placeholder="Ta taille">`;
+                } else if(p.typeTaille === 'enfant') {
+                    selectHTML = `<select class="select-taille" id="${idTaille}" onchange="gererTaillePerso('${idTaille}')">
+                        <option value="">Choisir taille</option>
+                        <option value="T20 - 2 ans">T20 - 2 ans</option><option value="T30 - 3 ans">T30 - 3 ans</option>
+                        <option value="XM - 4/5 ans">XM - 4/5 ans</option><option value="XR - 6/7 ans">XR - 6/7 ans</option>
+                        <option value="autre">Autre</option>
+                    </select><input type="text" class="input-perso" id="${idTaille}-perso" placeholder="Ta taille">`;
+                } else if(p.typeTaille === 'bebe') {
+                    selectHTML = `<select class="select-taille" id="${idTaille}" onchange="gererTaillePerso('${idTaille}')">
+                        <option value="">Choisir taille</option>
+                        <option value="0-3 mois">0-3 mois</option><option value="3-6 mois">3-6 mois</option>
+                        <option value="6-9 mois">6-9 mois</option><option value="9-12 mois">9-12 mois</option>
+                        <option value="autre">Autre</option>
+                    </select><input type="text" class="input-perso" id="${idTaille}-perso" placeholder="Ta taille">`;
+                } else if(p.typeTaille === 'pointure') {
+                    selectHTML = `<select class="select-taille" id="${idTaille}" onchange="gererTaillePerso('${idTaille}')">
+                        <option value="">Choisir pointure</option>
+                        <option value="Pointure 20">Pointure 20</option><option value="Pointure 22">Pointure 22</option>
+                        <option value="Pointure 24">Pointure 24</option><option value="Pointure 26">Pointure 26</option>
+                        <option value="Pointure 28">Pointure 28</option><option value="Pointure 30">Pointure 30</option>
+                        <option value="autre">Autre</option>
+                    </select><input type="text" class="input-perso" id="${idTaille}-perso" placeholder="Ta pointure">`;
+                }
+
+                let galerieHTML = '';
+                if(p.images && p.images.length > 1) {
+                    galerieHTML = `
+                    <div class="galerie-auto">
+                        <img src="${p.images[0].image}" style="width:100%;height:220px;object-fit:cover;border-radius:10px;" id="grande-cms-${p.slug}" alt="${p.nom}">
+                        <div class="galerie-auto miniatures">
+                            ${p.images.map((img, index) => `
+                                <img src="${img.image}" style="border:${index === 0? '3px solid #E6BE8A' : '2px solid #ddd'}" onclick="changerPhotoCMS('cms-${p.slug}', '${img.image}', this)">
+                            `).join('')}
+                        </div>
+                    </div>`;
+                } else if(p.images && p.images.length === 1) {
+                    galerieHTML = `<img src="${p.images[0].image}" alt="${p.nom}" style="width:100%;height:220px;object-fit:cover;border-radius:10px;">`;
+                }
+
+                return `
+                <div class="produit" data-categorie="${p.categorie}">
+                    ${galerieHTML}
+                    <h3>${p.nom}</h3>
+                    <div class="prix">${p.prix.toLocaleString()} FCFA</div>
+                    ${selectHTML}
+                    <button class="btn-ajouter" onclick="ajouterPanier('${p.nom}', ${p.prix}, '${p.typeTaille!== 'none'? idTaille : ''}')">Ajouter au panier</button>
+                </div>`;
+            }).join('');
+
+            container.insertAdjacentHTML('beforeend', nouveauxProduits);
+        }
+
+        function changerPhotoCMS(slug, nouvelleSrc, miniElement) {
+            document.getElementById(`grande-${slug}`).src = nouvelleSrc;
+            miniElement.parentElement.querySelectorAll('img').forEach(img => img.style.border = '2px solid #ddd');
+            miniElement.style.border = '3px solid #E6BE8A';
+        }
+
+        // NETLIFY IDENTITY
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
+</script>
+</body>
+</html>
