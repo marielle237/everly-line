@@ -6,7 +6,7 @@ public_folder: /assets/uploads
 collections:
     - name: produits
     label: Produits
-    folder:"-produits"
+    folder: Produits
     create: true
     slug: "{{slug}}"
     fields:
