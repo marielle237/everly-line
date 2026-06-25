@@ -2,40 +2,17 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "images/uploads"
-public_folder: "/images/uploads"
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
 
 collections:
     - name: "produits"
-    label: "Mes Produits"
+    label: "Produits"
     folder: "_produits"
     create: true
     slug: "{{slug}}"
     fields:
-            - { label: "Nom du produit", name: "nom", widget: "string", required: true }
-            - { label: "Prix FCFA", name: "prix", widget: "number", required: true }
-            - label: "Catégorie"
-        name: "categorie"
-        widget: "select"
-        required: true
-        options:
-                    - { label: "Femme", value: "femme" }
-                    - { label: "Homme", value: "homme" }
-                    - { label: "Enfant", value: "enfant" }
-                    - { label: "Chaussure", value: "chaussure" }
-            - label: "Galerie Photos"
-        name: "images"
-        widget: "list"
-        required: true
-        field: { label: "Photo", name: "image", widget: "image" }
-        hint: "1ère photo = photo principale. Tu peux en ajouter autant que tu veux"
-            - label: "Type de taille"
-        name: "typeTaille"
-        widget: "select"
-        required: true
-        options:
-                    - { label: "Pas de taille", value: "none" }
-                    - { label: "Pointure 20-30", value: "pointure" }
-                    - { label: "Taille Enfant T20/XM/XR", value: "enfant" }
-                    - { label: "Taille Bébé 0-12 mois", value: "bebe" }
-                    - { label: "Vêtement S/M/L/XL", value: "vetement" }
+            - {label: "Nom", name: "title", widget: "string"}
+            - {label: "Prix", name: "prix", widget: "string"}
+            - {label: "Image", name: "image", widget: "image"}
+            - {label: "Description", name: "description", widget: "text"}
