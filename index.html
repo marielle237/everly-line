@@ -21,159 +21,76 @@
             z-index: 999;
             min-height: 200px;
         }
-      .header-top { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: flex-start; 
-            padding: 15px 20px;
-        }
-      .logo { 
-            width: 70px; 
-            height: 70px; 
-            border-radius: 50%; 
-            border: 3px solid white; 
-            object-fit: cover; 
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        }
-      .titre { 
-            color: #1C1C1C; 
-            font-size: 20px; 
-            flex-grow: 1; 
-            text-align: center; 
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
-            margin-top: 10px;
-            font-weight: bold;
-        }
-      .panier { 
-            background: #E6BE8A; 
-            color: #1C1C1C; 
-            padding: 8px 12px; 
-            border-radius: 25px; 
-            cursor: pointer; 
-            font-weight: bold;
-            font-size: 14px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        }
+        .header-top { display: flex; justify-content: space-between; align-items: flex-start; padding: 15px 20px; }
+        .logo { width: 70px; height: 70px; border-radius: 50%; border: 3px solid white; object-fit: cover; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+        .titre { color: #1C1C1C; font-size: 20px; flex-grow: 1; text-align: center; text-shadow: 1px 1px 2px rgba(255,255,255,0.8); margin-top: 10px; font-weight: bold; }
+        .panier { background: #E6BE8A; color: #1C1C1C; padding: 8px 12px; border-radius: 25px; cursor: pointer; font-weight: bold; font-size: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
  
-        nav { 
-            background: rgba(230, 190, 138, 0.95); 
-            padding: 8px; 
-            text-align: center; 
-        }
-        nav a { 
-            color: #1C1C1C; 
-            text-decoration: none; 
-            margin: 0 15px; 
-            font-weight: bold; 
-            font-size: 15px; 
-            cursor: pointer; 
-        }
+        nav { background: rgba(230, 190, 138, 0.95); padding: 8px; text-align: center; }
+        nav a { color: #1C1C1C; text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 15px; cursor: pointer; }
         nav a:hover { text-decoration: underline; }
  
-      .hero-everly {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
-                        url('images/shopping-famille.jpeg');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-        }
-      .hero-contenu { padding: 20px; }
-      .hero-bienvenue { font-size: 2.2rem; font-weight: 300; margin-bottom: 0.8rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.7); }
-      .hero-slogan { font-size: 1.5rem; margin-bottom: 3rem; font-style: italic; text-shadow: 2px 2px 8px rgba(0,0,0,0.7); }
-      .btn-information { background: #E6BE8A; color: #1C1C1C; padding: 18px 50px; text-decoration: none; font-weight: 600; letter-spacing: 2px; border-radius: 2px; transition: 0.3s; display: inline-block; }
-      .btn-information:hover { background: white; transform: translateY(-3px); }
+        .hero-everly { height: 100vh; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/shopping-famille.jpeg'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; color: white; }
+        .hero-contenu { padding: 20px; }
+        .hero-bienvenue { font-size: 2.2rem; font-weight: 300; margin-bottom: 0.8rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.7); }
+        .hero-slogan { font-size: 1.5rem; margin-bottom: 3rem; font-style: italic; text-shadow: 2px 2px 8px rgba(0,0,0,0.7); }
+        .btn-information { background: #E6BE8A; color: #1C1C1C; padding: 18px 50px; text-decoration: none; font-weight: 600; letter-spacing: 2px; border-radius: 2px; transition: 0.3s; display: inline-block; }
+        .btn-information:hover { background: white; transform: translateY(-3px); }
  
-      .contact-accueil {
-            background: #1C1C1C;
-            color: #E6BE8A;
-            text-align: center;
-            padding: 80px 20px;
-            min-height: 70vh;
-        }
-      .contact-accueil h2 { font-size: 28px; margin-bottom: 20px; }
-      .contact-accueil p { font-size: 18px; margin: 10px 0; }
-      .livraison { color: #E6BE8A; font-weight: bold; margin: 15px 0; font-size: 20px; }
+        .contact-accueil { background: #1C1C1C; color: #E6BE8A; text-align: center; padding: 80px 20px; min-height: 70vh; }
+        .contact-accueil h2 { font-size: 28px; margin-bottom: 20px; }
+        .contact-accueil p { font-size: 18px; margin: 10px 0; }
+        .livraison { color: #E6BE8A; font-weight: bold; margin: 15px 0; font-size: 20px; }
  
         #page-produits { display: none; padding-top: 20px; }
  
-      .filtres-categories { text-align: center; padding: 40px 20px 10px; background: #F8F6F0; }
-      .filtres-categories h2 { margin-bottom: 20px; color: #1C1C1C; }
-      .btn-filtre { background: white; color: #1C1C1C; border: 2px solid #E6BE8A; padding: 10px 25px; margin: 5px; border-radius: 25px; cursor: pointer; font-weight: bold; transition: 0.3s; }
-      .btn-filtre:hover,.btn-filtre.actif { background: #E6BE8A; color: #1C1C1C; }
+        .filtres-categories { text-align: center; padding: 40px 20px 10px; background: #F8F6F0; }
+        .filtres-categories h2 { margin-bottom: 20px; color: #1C1C1C; }
+        .btn-filtre { background: white; color: #1C1C1C; border: 2px solid #E6BE8A; padding: 10px 25px; margin: 5px; border-radius: 25px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .btn-filtre:hover, .btn-filtre.actif { background: #E6BE8A; color: #1C1C1C; }
  
-      .produits {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            padding: 30px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-      .produit {
-            background: white;
-            border-radius: 15px;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border: 2px solid #E6BE8A;
-            width: 100%;
-        }
-      .produit.cache { display: none; }
-      .produit img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-      .produit h3 { margin: 10px 0; color: #1C1C1C; font-size: 16px; }
-      .prix { color: #C9B8A8; font-size: 20px; font-weight: bold; margin: 10px 0; }
-      .btn-ajouter { background: #1C1C1C; color: #E6BE8A; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px; }
-      .btn-ajouter:hover { background: #E6BE8A; color: #1C1C1C; }
-      .select-taille { width: 100%; padding: 8px; margin: 10px 0 5px 0; border: 2px solid #E6BE8A; border-radius: 8px; font-weight: bold; text-align: center; }
-      .input-perso { display: none; width: 100%; padding: 8px; margin: 0 0 10px 0; border: 2px solid #E6BE8A; border-radius: 8px; }
+        .produits { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 30px; max-width: 1400px; margin: 0 auto; }
+        .produit { background: white; border-radius: 15px; padding: 15px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 2px solid #E6BE8A; width: 100%; }
+        .produit.cache { display: none; }
+        .produit img { width: 100%; height: 220px; object-fit: cover; border-radius: 10px; }
+        .produit h3 { margin: 10px 0; color: #1C1C1C; font-size: 16px; }
+        .prix { color: #C9B8A8; font-size: 20px; font-weight: bold; margin: 10px 0; }
+        .btn-ajouter { background: #1C1C1C; color: #E6BE8A; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px; }
+        .btn-ajouter:hover { background: #E6BE8A; color: #1C1C1C; }
+        .select-taille { width: 100%; padding: 8px; margin: 10px 0 5px 0; border: 2px solid #E6BE8A; border-radius: 8px; font-weight: bold; text-align: center; }
+        .input-perso { display: none; width: 100%; padding: 8px; margin: 0 0 10px 0; border: 2px solid #E6BE8A; border-radius: 8px; }
  
         footer { background: #1C1C1C; color: #E6BE8A; text-align: center; padding: 20px; margin-top: 40px; }
-      .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; }
-      .modal-content { background: white; margin: 3% auto; padding: 20px; width: 90%; max-width: 500px; border-radius: 15px; position: relative; max-height: 90vh; overflow-y: auto; }
-      .close { position: absolute; top: 10px; right: 15px; font-size: 28px; cursor: pointer; color: #1C1C1C; }
-      .btn-whatsapp { background: #25D366; color: white; border: none; padding: 15px; border-radius: 25px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 15px; font-size: 16px; }
-      .form-client { margin: 15px 0; }
-      .form-client input { width: 100%; padding: 10px; margin: 5px 0; border: 2px solid #E6BE8A; border-radius: 8px; }
-      .btn-supprimer { background: #ff4444; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-left: 10px; }
-      .article-panier { display: flex; justify-content: space-between; align-items: center; margin: 8px 0; padding: 5px; border-bottom: 1px solid #eee; }
-      .galerie-auto { margin-bottom: 10px; }
-      .galerie-auto img { transition: 0.3s; cursor: pointer; }
-      .galerie-auto.miniatures { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
-      .galerie-auto.miniatures img { width: 60px; height: 60px; object-fit: cover; border-radius: 5px; border: 2px solid #ddd; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; }
+        .modal-content { background: white; margin: 3% auto; padding: 20px; width: 90%; max-width: 500px; border-radius: 15px; position: relative; max-height: 90vh; overflow-y: auto; }
+        .close { position: absolute; top: 10px; right: 15px; font-size: 28px; cursor: pointer; color: #1C1C1C; }
+        .btn-whatsapp { background: #25D366; color: white; border: none; padding: 15px; border-radius: 25px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 15px; font-size: 16px; }
+        .form-client { margin: 15px 0; }
+        .form-client input { width: 100%; padding: 10px; margin: 5px 0; border: 2px solid #E6BE8A; border-radius: 8px; }
+        .btn-supprimer { background: #ff4444; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-left: 10px; }
+        .article-panier { display: flex; justify-content: space-between; align-items: center; margin: 8px 0; padding: 5px; border-bottom: 1px solid #eee; }
+        .galerie-auto { margin-bottom: 10px; }
+        .galerie-auto img { transition: 0.3s; cursor: pointer; }
+        .galerie-auto.miniatures { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+        .galerie-auto.miniatures img { width: 60px; height: 60px; object-fit: cover; border-radius: 5px; border: 2px solid #ddd; }
  
-        @media (max-width: 1024px) {
-          .produits { grid-template-columns: repeat(3, 1fr); }
-        }
+        @media (max-width: 1024px) { .produits { grid-template-columns: repeat(3, 1fr); } }
         @media (max-width: 768px) {
-          .produits { grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 20px; }
-          .produit img { height: 180px; }
-          .hero-everly { height: 85vh; }
-          .hero-bienvenue { font-size: 1.6rem; }
-          .hero-slogan { font-size: 1.2rem; }
-          .titre { font-size: 18px; }
-          header { min-height: 160px; }
+            .produits { grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 20px; }
+            .produit img { height: 180px; }
+            .hero-everly { height: 85vh; }
+            .hero-bienvenue { font-size: 1.6rem; }
+            .hero-slogan { font-size: 1.2rem; }
+            .titre { font-size: 18px; }
+            header { min-height: 160px; }
         }
         @media (max-width: 480px) {
-          .produits { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 15px; }
-          .produit { padding: 10px; }
-          .produit img { height: 150px; }
+            .produits { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 15px; }
+            .produit { padding: 10px; }
+            .produit img { height: 150px; }
         }
-        .galerie-produit { margin-bottom: 10px; }
-        .photo-principale { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; cursor: pointer; }
-        .miniatures { display: flex; gap: 5px; margin-top: 8px; justify-content: center; flex-wrap: wrap; }
         .miniatures img { width: 50px; height: 50px; object-fit: cover; border-radius: 5px; cursor: pointer; border: 2px solid transparent; opacity: 0.6; transition: 0.2s; }
         .miniatures img.active, .miniatures img:hover { border-color: #E6BE8A; opacity: 1; border-width: 3px; }
-        .input-perso { display: none; width: 100%; padding: 8px; margin-top: 5px; border: 2px solid #E6BE8A; border-radius: 5px; }
     </style>
 </head>
 <body>
@@ -198,7 +115,6 @@
                 <a href="#contact-accueil" class="btn-information">information</a>
             </div>
         </section>
- 
         <section class="contact-accueil" id="contact-accueil">
             <h2>Contactez-nous</h2>
             <p class="livraison">🚚 Livraison aux frais du client</p>
@@ -236,7 +152,6 @@
                 <input type="text" class="input-perso" id="pointure-ballerine-perso" placeholder="Écris ta pointure ici">
                 <button class="btn-ajouter" onclick="ajouterPanier('Ballerine Marron', 8000, 'pointure-ballerine')">Ajouter au panier</button>
             </div>
- 
             <!-- 2 -->
             <div class="produit" data-categorie="enfant">
                 <img src="images/bonnet.jpeg" alt="Bonnet">
@@ -244,7 +159,6 @@
                 <div class="prix">2000 FCFA</div>
                 <button class="btn-ajouter" onclick="ajouterPanier('Bonnet', 2000, null)">Ajouter au panier</button>
             </div>
- 
             <!-- 3 -->
             <div class="produit" data-categorie="homme enfant">
                 <img src="images/djean-chemise.jpeg" alt="djean-chemise">
@@ -261,7 +175,6 @@
                 <input type="text" class="input-perso" id="taille-djean-perso" placeholder="Écris ta taille ici">
                 <button class="btn-ajouter" onclick="ajouterPanier('djean-chemise', 10000, 'taille-djean')">Ajouter au panier</button>
             </div>
- 
             <!-- 4 -->
             <div class="produit" data-categorie="enfant">
                 <img src="images/ensemble.jpeg" alt="Ensemble">
@@ -278,7 +191,6 @@
                 <input type="text" class="input-perso" id="taille-ensemble-perso" placeholder="Écris ta taille ici">
                 <button class="btn-ajouter" onclick="ajouterPanier('Ensemble', 15000, 'taille-ensemble')">Ajouter au panier</button>
             </div>
- 
             <!-- 5 -->
             <div class="produit" data-categorie="enfant">
                 <img src="images/ensemble%20bebe.jpeg" alt="Ensemble Bébé">
@@ -295,7 +207,6 @@
                 <input type="text" class="input-perso" id="taille-bebe-perso" placeholder="Écris ta taille ici">
                 <button class="btn-ajouter" onclick="ajouterPanier('Ensemble Bébé', 15000, 'taille-bebe')">Ajouter au panier</button>
             </div>
- 
             <!-- 6 -->
             <div class="produit" data-categorie="enfant">
                 <img src="images/ensemble%20cullotte%20gris.jpeg" alt="Ensemble Cullotte Gris">
@@ -312,7 +223,6 @@
                 <input type="text" class="input-perso" id="taille-cullotte-perso" placeholder="Écris ta taille ici">
                 <button class="btn-ajouter" onclick="ajouterPanier('Ensemble Cullotte Gris', 8500, 'taille-cullotte')">Ajouter au panier</button>
             </div>
- 
             <!-- 7 -->
             <div class="produit" data-categorie="enfant">
                 <img src="images/ensemble%20djean%20short.jpeg" alt="Ensemble Djean Short">
@@ -329,7 +239,6 @@
                 <input type="text" class="input-perso" id="taille-djeanshort-perso" placeholder="Écris ta taille ici">
                 <button class="btn-ajouter" onclick="ajouterPanier('Ensemble Djean Short', 9000, 'taille-djeanshort')">Ajouter au panier</button>
             </div>
- 
             <!-- 8 -->
             <div class="produit" data-categorie="enfant">
                 <img src="images/ensemble%20maron.jpeg" alt="Ensemble Marron">
@@ -346,7 +255,6 @@
                 <input type="text" class="input-perso" id="taille-marron-perso" placeholder="Écris ta taille ici">
                 <button class="btn-ajouter" onclick="ajouterPanier('Ensemble Marron', 9000, 'taille-marron')">Ajouter au panier</button>
             </div>
- 
             <!-- 9 -->
             <div class="produit" data-categorie="enfant">
                 <img src="images/ensemble%20plus%20valise.jpeg" alt="Ensemble + Valise">
@@ -363,7 +271,6 @@
                 <input type="text" class="input-perso" id="taille-valise-perso" placeholder="Écris ta taille ici">
                 <button class="btn-ajouter" onclick="ajouterPanier('Ensemble + Valise', 15000, 'taille-valise')">Ajouter au panier</button>
             </div>
- 
             <!-- 10 -->
             <div class="produit" data-categorie="enfant">
                 <img src="images/ensemble%20short%20bleu%20blanc.jpeg" alt="Ensemble Short Bleu Blanc">
@@ -380,7 +287,6 @@
                 <input type="text" class="input-perso" id="taille-bleublanc-perso" placeholder="Écris ta taille ici">
                 <button class="btn-ajouter" onclick="ajouterPanier('Ensemble Short Bleu Blanc', 6000, 'taille-bleublanc')">Ajouter au panier</button>
             </div>
- 
             <!-- 11 -->
             <div class="produit" data-categorie="enfant">
                 <img src="images/ensemble%20short.jpeg" alt="Ensemble Short">
@@ -397,7 +303,6 @@
                 <input type="text" class="input-perso" id="taille-short-perso" placeholder="Écris ta taille ici">
                 <button class="btn-ajouter" onclick="ajouterPanier('Ensemble Short', 10000, 'taille-short')">Ajouter au panier</button>
             </div>
- 
             <!-- 12 - AVEC 2 PHOTOS -->
             <div class="produit" data-categorie="enfant" data-photos="images/ensemble%20grenouillere%20valise.jpeg,images/ensemblegrenouillere%20valise-contenu.jpeg">
                 <div class="galerie-auto"></div>
@@ -414,7 +319,6 @@
                 <input type="text" class="input-perso" id="taille-grenouillere-perso" placeholder="Écris ta taille ici">
                 <button class="btn-ajouter" onclick="ajouterPanier('Grenouillère Valise', 15000, 'taille-grenouillere')">Ajouter au panier</button>
             </div>
- 
             <!-- 13 -->
             <div class="produit" data-categorie="femme">
                 <img src="images/robe%20blanche.jpeg" alt="Robe Blanche">
@@ -422,16 +326,13 @@
                 <div class="prix">8.500 FCFA</div>
                 <select class="select-taille" id="taille-robeblanche" onchange="gererTaillePerso('taille-robeblanche')">
                     <option value="">Choisir taille</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
+                    <option value="S">S</option><option value="M">M</option>
+                    <option value="L">L</option><option value="XL">XL</option>
                     <option value="autre">Autre - Entrer ma taille</option>
                 </select>
                 <input type="text" class="input-perso" id="taille-robeblanche-perso" placeholder="Écris ta taille ici">
                 <button class="btn-ajouter" onclick="ajouterPanier('Robe Blanche', 8500, 'taille-robeblanche')">Ajouter au panier</button>
             </div>
- 
             <!-- 14 -->
             <div class="produit" data-categorie="femme">
                 <img src="images/robe%20rose.jpeg" alt="Robe Rose">
@@ -439,16 +340,13 @@
                 <div class="prix">15.000 FCFA</div>
                 <select class="select-taille" id="taille-roberose" onchange="gererTaillePerso('taille-roberose')">
                     <option value="">Choisir taille</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
+                    <option value="S">S</option><option value="M">M</option>
+                    <option value="L">L</option><option value="XL">XL</option>
                     <option value="autre">Autre - Entrer ma taille</option>
                 </select>
                 <input type="text" class="input-perso" id="taille-roberose-perso" placeholder="Écris ta taille ici">
                 <button class="btn-ajouter" onclick="ajouterPanier('Robe Rose', 15000, 'taille-roberose')">Ajouter au panier</button>
             </div>
- 
             <!-- 15 -->
             <div class="produit" data-categorie="femme">
                 <img src="images/robe%20rouge%20princesse.jpeg" alt="Robe Rouge Princesse">
@@ -456,16 +354,13 @@
                 <div class="prix">9.500 FCFA</div>
                 <select class="select-taille" id="taille-roberouge" onchange="gererTaillePerso('taille-roberouge')">
                     <option value="">Choisir taille</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
+                    <option value="S">S</option><option value="M">M</option>
+                    <option value="L">L</option><option value="XL">XL</option>
                     <option value="autre">Autre - Entrer ma taille</option>
                 </select>
                 <input type="text" class="input-perso" id="taille-roberouge-perso" placeholder="Écris ta taille ici">
                 <button class="btn-ajouter" onclick="ajouterPanier('Robe Rouge Princesse', 9500, 'taille-roberouge')">Ajouter au panier</button>
             </div>
- 
             <!-- 16 -->
             <div class="produit" data-categorie="femme">
                 <img src="images/robette.jpeg" alt="Robette">
@@ -473,16 +368,13 @@
                 <div class="prix">6.500 FCFA</div>
                 <select class="select-taille" id="taille-robette" onchange="gererTaillePerso('taille-robette')">
                     <option value="">Choisir taille</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
+                    <option value="S">S</option><option value="M">M</option>
+                    <option value="L">L</option><option value="XL">XL</option>
                     <option value="autre">Autre - Entrer ma taille</option>
                 </select>
                 <input type="text" class="input-perso" id="taille-robette-perso" placeholder="Écris ta taille ici">
                 <button class="btn-ajouter" onclick="ajouterPanier('Robette', 6500, 'taille-robette')">Ajouter au panier</button>
             </div>
- 
             <!-- 17 -->
             <div class="produit" data-categorie="chaussure">
                 <img src="images/sandale.jpeg" alt="Sandale">
@@ -501,7 +393,6 @@
                 <input type="text" class="input-perso" id="pointure-sandale-perso" placeholder="Écris ta pointure ici">
                 <button class="btn-ajouter" onclick="ajouterPanier('Sandale', 6500, 'pointure-sandale')">Ajouter au panier</button>
             </div>
- 
             <!-- 18 -->
             <div class="produit" data-categorie="chaussure">
                 <img src="images/tenis%20blanche.jpeg" alt="Tenis Blanche">
@@ -520,7 +411,6 @@
                 <input type="text" class="input-perso" id="pointure-tenisblanche-perso" placeholder="Écris ta pointure ici">
                 <button class="btn-ajouter" onclick="ajouterPanier('Tenis Blanche', 10000, 'pointure-tenisblanche')">Ajouter au panier</button>
             </div>
- 
             <!-- 19 -->
             <div class="produit" data-categorie="chaussure">
                 <img src="images/tennis%20lacet%20rose.jpeg" alt="Tennis Lacet Rose">
@@ -540,7 +430,7 @@
                 <button class="btn-ajouter" onclick="ajouterPanier('Tennis Lacet Rose', 10000, 'pointure-lacetrose')">Ajouter au panier</button>
             </div>
  
-            <!-- ✅ LES PRODUITS CMS SERONT AJOUTÉS ICI AUTOMATIQUEMENT -->
+            <!-- ✅ PRODUITS CMS AJOUTÉS AUTOMATIQUEMENT ICI -->
         </section>
     </div>
  
@@ -655,9 +545,9 @@
                 panier.forEach((item, index) => {
                     const tailleText = item.taille ? ` - ${item.taille}` : '';
                     html += `<div class="article-panier">
-                                <span>${item.nom}${tailleText} - ${item.prix.toLocaleString()} FCFA</span>
-                                <button class="btn-supprimer" onclick="supprimerArticle(${index})">X</button>
-                             </div>`;
+                        <span>${item.nom}${tailleText} - ${item.prix.toLocaleString()} FCFA</span>
+                        <button class="btn-supprimer" onclick="supprimerArticle(${index})">X</button>
+                    </div>`;
                     somme += item.prix;
                 });
                 contenu.innerHTML = html;
@@ -707,19 +597,14 @@
                 return;
             }
             let message = `*NOUVELLE COMMANDE EVERLY LINE* 👑%0A%0A`;
-            message += `*CLIENT:* ${nom}%0A`;
-            message += `*TÉL:* ${tel}%0A`;
-            message += `*QUARTIER + VILLE:* ${quartierVille}%0A`;
-            message += `*PAIEMENT:* ${paiement}%0A%0A`;
-            message += `*ARTICLES:*%0A`;
+            message += `*CLIENT:* ${nom}%0A*TÉL:* ${tel}%0A*QUARTIER + VILLE:* ${quartierVille}%0A*PAIEMENT:* ${paiement}%0A%0A*ARTICLES:*%0A`;
             let total = 0;
             panier.forEach(item => {
                 const tailleText = item.taille ? ` (${item.taille})` : '';
                 message += `- ${item.nom}${tailleText} : ${item.prix.toLocaleString()} FCFA%0A`;
                 total += item.prix;
             });
-            message += `%0A*TOTAL: ${total.toLocaleString()} FCFA*%0A%0A`;
-            message += `🚚 *Livraison aux frais du client*%0A`;
+            message += `%0A*TOTAL: ${total.toLocaleString()} FCFA*%0A%0A🚚 *Livraison aux frais du client*%0A`;
             if (['orange', 'mtn', 'acompte10', 'acompte15'].includes(paiementSelect.value)) {
                 message += `⚠️ *Envoie la capture d'écran du dépôt sur WhatsApp pour valider*%0A%0A`;
             }
@@ -736,7 +621,7 @@
         }
  
         // ============================================================
-        // CHARGEMENT AUTOMATIQUE DES PRODUITS DEPUIS DECAP CMS
+        // CHARGEMENT PRODUITS CMS AVEC TAILLES MULTIPLES + OPTION AUTRE
         // ============================================================
         async function chargerProduitsCMS() {
             try {
@@ -747,16 +632,14 @@
                 const mdFichiers = fichiers.filter(f => f.name.endsWith('.md'));
                 if (mdFichiers.length === 0) return;
  
-                const produits = await Promise.all(mdFichiers.map(async (fichier) => {
-                    const res = await fetch(fichier.download_url);
+                const produits = await Promise.all(mdFichiers.map(async (f) => {
+                    const res = await fetch(f.download_url);
                     const texte = await res.text();
-                    return parseFrontmatter(texte, fichier.name);
+                    return parseFrontmatter(texte, f.name);
                 }));
  
-                const produitsValides = produits.filter(p => p !== null);
-                if (produitsValides.length > 0) {
-                    ajouterProduitsCMS(produitsValides);
-                }
+                const valides = produits.filter(p => p !== null);
+                if (valides.length > 0) ajouterProduitsCMS(valides);
             } catch (e) {
                 console.log('Produits CMS non chargés:', e);
             }
@@ -767,26 +650,40 @@
                 const match = texte.match(/^---[\r\n]+([\s\S]*?)[\r\n]+---/);
                 if (!match) return null;
                 const data = {};
+                // Parse les champs simples
                 match[1].split('\n').forEach(ligne => {
+                    // Ignorer les lignes qui commencent par - (listes yaml)
+                    if (ligne.trim().startsWith('-')) return;
                     const idx = ligne.indexOf(':');
                     if (idx === -1) return;
                     const cle = ligne.slice(0, idx).trim();
                     const valeur = ligne.slice(idx + 1).trim().replace(/^["']|["']$/g, '');
                     if (cle) data[cle] = valeur;
                 });
+                // Parse taille comme liste si plusieurs valeurs
+                const tailleMatch = match[1].match(/taille:\n((?:\s*-\s*.+\n?)+)/);
+                if (tailleMatch) {
+                    data.taille = tailleMatch[1]
+                        .split('\n')
+                        .map(l => l.replace(/^\s*-\s*/, '').trim())
+                        .filter(l => l.length > 0);
+                } else if (data.taille) {
+                    // taille simple sur une ligne
+                    data.taille = [data.taille];
+                } else {
+                    data.taille = ['Unique'];
+                }
                 if (!data.title) return null;
                 return {
                     slug: filename.replace('.md', ''),
                     nom: data.title,
                     prix: parseInt(data.prix) || 0,
-                    taille: data.taille || 'Unique',
+                    tailles: data.taille,
                     image: data.image || '',
                     categorie: data.categorie || 'tous',
                     description: data.description || ''
                 };
-            } catch (e) {
-                return null;
-            }
+            } catch (e) { return null; }
         }
  
         function ajouterProduitsCMS(produits) {
@@ -795,6 +692,18 @@
  
             const html = produits.map(p => {
                 const idTaille = `taille-cms-${p.slug}`;
+                const idPerso = `${idTaille}-perso`;
+ 
+                // Construire les options du select
+                let options = '<option value="">Choisir taille/pointure</option>';
+                p.tailles.forEach(t => {
+                    if (t !== 'autre') {
+                        options += `<option value="${t}">${t}</option>`;
+                    }
+                });
+                // Toujours ajouter "Autre" à la fin
+                options += `<option value="autre">Autre - Entrer ma taille</option>`;
+ 
                 const imgHTML = p.image
                     ? `<img src="${p.image}" alt="${p.nom}" style="width:100%;height:220px;object-fit:cover;border-radius:10px;">`
                     : `<div style="width:100%;height:220px;background:#f0f0f0;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#999;">Pas de photo</div>`;
@@ -804,9 +713,10 @@
                     ${imgHTML}
                     <h3>${p.nom}</h3>
                     <div class="prix">${Number(p.prix).toLocaleString()} FCFA</div>
-                    <select class="select-taille" id="${idTaille}">
-                        <option value="${p.taille}">${p.taille}</option>
+                    <select class="select-taille" id="${idTaille}" onchange="gererTaillePerso('${idTaille}')">
+                        ${options}
                     </select>
+                    <input type="text" class="input-perso" id="${idPerso}" placeholder="Écris ta taille ici">
                     <button class="btn-ajouter" onclick="ajouterPanier('${p.nom.replace(/'/g, "\\'")}', ${p.prix}, '${idTaille}')">Ajouter au panier</button>
                 </div>`;
             }).join('');
@@ -825,10 +735,7 @@
                 galerie.innerHTML = '';
                 let grandeImage = document.createElement('img');
                 grandeImage.src = photos[0];
-                grandeImage.style.width = '100%';
-                grandeImage.style.height = '220px';
-                grandeImage.style.objectFit = 'cover';
-                grandeImage.style.borderRadius = '10px';
+                grandeImage.style.cssText = 'width:100%;height:220px;object-fit:cover;border-radius:10px;';
                 galerie.appendChild(grandeImage);
                 if (photos.length > 1) {
                     let box = document.createElement('div');
@@ -848,11 +755,9 @@
                 }
             });
  
-            // Chargement des produits CMS
             chargerProduitsCMS();
         });
  
-        // Netlify Identity
         if (window.netlifyIdentity) {
             window.netlifyIdentity.on("init", user => {
                 if (!user) {
