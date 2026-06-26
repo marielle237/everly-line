@@ -6,14 +6,38 @@ media_folder: assets/uploads
 public_folder: /assets/uploads
 
 collections:
-  - name: produits
-    label: Produits
-    folder: produits
+  - name: "produits"
+    label: "Produits"
+    folder: "produits"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: Nom, name: title, widget: string }
-      - { label: Prix, name: prix, widget: string }
-      - { label: Taille, name: taille, widget: select, options: [S, M, L, XL, Unique] }
-      - { label: Photo, name: image, widget: image }
-      - { label: Description, name: description, widget: text }
+      - { label: "Nom", name: "title", widget: "string" }
+      - { label: "Prix", name: "prix", widget: "number" }
+      - label: "Catégorie"
+        name: "categorie"
+        widget: "select"
+        options:
+          - { label: "Femme", value: "femme" }
+          - { label: "Homme", value: "homme" }
+          - { label: "Enfant", value: "enfant" }
+          - { label: "Chaussure", value: "chaussure" }
+      - label: "Taille(s)"
+        name: "taille"
+        widget: "select"
+        multiple: true
+        options:
+          - { label: "S", value: "S" }
+          - { label: "M", value: "M" }
+          - { label: "L", value: "L" }
+          - { label: "XL", value: "XL" }
+          - { label: "Pointure 36", value: "Pointure 36" }
+          - { label: "Pointure 37", value: "Pointure 37" }
+          - { label: "Pointure 38", value: "Pointure 38" }
+          - { label: "Pointure 39", value: "Pointure 39" }
+          - { label: "Pointure 40", value: "Pointure 40" }
+          - { label: "Pointure 41", value: "Pointure 41" }
+          - { label: "Unique", value: "Unique" }
+          - { label: "Autre (client saisit sa taille)", value: "autre" }
+      - { label: "Photo", name: "image", widget: "image" }
+      - { label: "Description", name: "description", widget: "text" }
